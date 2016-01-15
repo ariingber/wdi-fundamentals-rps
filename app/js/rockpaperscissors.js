@@ -3,35 +3,37 @@
 ////////////////////////////////////////////////
 'use strict';
 
-function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
-    return prompt();
+var getInput = function() {
+   console.log("Please choose either 'rock', 'paper', or 'scissors'.");
+   var answer = prompt();
+   return answer;
 }
-function randomPlay() {
+
+var randomPlay = function() {
     var randomNumber = Math.random();
     if (randomNumber < 0.33) {
-        return "rock";
+        return 'rock';
     } else if (randomNumber < 0.66) {
-        return "paper";
+        return 'paper';
     } else {
-        return "scissors";
+        return 'scissors';
     }
 }
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
-function getPlayerMove(move) {
-  var playerMove = move || getInput();
-  return playerMove;
+var getPlayerMove = function(move) {
+    var playerMove = move || getInput();
+    return playerMove;
 }
 
-function getComputerMove(move) {
-  var computerMove = move || randomNumber randomPlay();
+var getComputerMove = function(move) {
+  var computerMove = move || randomPlay();
   return computerMove;
 }
 
-function getWinner(playerMove,computerMove) {
+var getWinner = function(playerMove,computerMove) {
   var winner;
   if ((playerMove == 'rock' && computerMove == 'scissors')||
     (playerMove == 'scissors' && computerMove == 'paper') ||
@@ -49,22 +51,29 @@ function getWinner(playerMove,computerMove) {
     return winner;
 }
 
-function playToFive() {
+
+var playToFive = function() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    while (playerWins != 5 && computerWins != 5) {
-      console.log(getWinner(getPlayerMove, getComputerMove) + 
-        " is the winner");
-      if (winner == 'player'){
-        playerWins += 1
-      }
-      else if (winner == 'computer') {
-        computerWins += 1
-      }
-      console.log("player has " + playerWins + " wins")
-      console.log("computer has " + computerWins + " wins")
+    var ties = 0;
+    while (playerWins < 5 && computerWins < 5) {
+        var playerMove = getPlayerMove('rock');
+        //must figure out how to holt program here till input has been made
+        var computerMove = getComputerMove();
+        var result = (getWinner(playerMove,computerMove));
+        if (result == 'computer'){
+            computerWins += 1;
+        }
+        else if (result == 'player'){
+            playerWins += 1;
+        }
+        else{
+            ties +=1;
+        }
+        console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+        console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
     }
-    return [playerWins, computerWins];
+return [playerWins, computerWins];
+    
 }
-
