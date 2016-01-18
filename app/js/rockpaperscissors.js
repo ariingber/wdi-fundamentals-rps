@@ -59,7 +59,8 @@ var playToFive = function() {
     var ties = 0;
     while (playerWins < 5 && computerWins < 5) {
         var playerMove = getPlayerMove('rock');
-        //must figure out how to holt program here till input has been made
+        /*must figure out how to holt program here 
+        untill input has been made an entry*/
         var computerMove = getComputerMove();
         var result = (getWinner(playerMove,computerMove));
         if (result == 'computer'){
@@ -74,6 +75,11 @@ var playToFive = function() {
         console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
         console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
     }
-return [playerWins, computerWins];
-    
+    if (playerWins == 5){
+        console.log("Player Wins")
+    }
+    else {
+        console.log("Computer Wins")
+    }
+    return [playerWins, computerWins];
 }
