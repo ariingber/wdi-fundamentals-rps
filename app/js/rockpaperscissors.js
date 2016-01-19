@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
-'use strict';
+//'use strict';
 
 var getInput = function() {
    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
@@ -58,7 +58,7 @@ var playToFive = function() {
     var computerWins = 0;
     var ties = 0;
     while (playerWins < 5 && computerWins < 5) {
-        var playerMove = getPlayerMove('rock');
+        var playerMove = getPlayerMove();
         /*must figure out how to holt program here 
         untill input has been made an entry*/
         var computerMove = getComputerMove();
