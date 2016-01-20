@@ -5,7 +5,7 @@
 
 var getInput = function() {
    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
-   var answer = prompt();
+   var answer = prompt("Please choose either 'rock', 'paper', or 'scissors'.");
    return answer;
 }
 
@@ -35,18 +35,16 @@ var getComputerMove = function(move) {
 
 var getWinner = function(playerMove,computerMove) {
   var winner;
-  if ((playerMove == 'rock' && computerMove == 'scissors')||
+  if (computerMove == playerMove){
+      winner = 'tie';
+  }
+  else if ((playerMove == 'rock' && computerMove == 'scissors')||
     (playerMove == 'scissors' && computerMove == 'paper') ||
     (playerMove == 'paper' && computerMove == 'rock')) {
       winner = 'player';
     }
-    else if ((computerMove == 'rock' && playerMove == 'scissors')||
-    (computerMove == 'scissors' && playerMove == 'paper') ||
-    (computerMove == 'paper' && playerMove == 'rock')) {
-        winner = 'computer';
-    }
     else {
-      winner = 'tie';
+        winner = 'computer';
     }
     return winner;
 }
@@ -59,8 +57,6 @@ var playToFive = function() {
     var ties = 0;
     while (playerWins < 5 && computerWins < 5) {
         var playerMove = getPlayerMove();
-        /*must figure out how to holt program here 
-        untill input has been made an entry*/
         var computerMove = getComputerMove();
         var result = (getWinner(playerMove,computerMove));
         if (result == 'computer'){
@@ -78,6 +74,35 @@ var playToFive = function() {
     if (playerWins == 5){
         console.log("Player Wins")
     }
+    else {
+        console.log("Computer Wins")
+    }
+    return [playerWins, computerWins];
+}
+
+var playToX = function(x) {
+  var playerWins = 0;
+  var computerWins = 0;
+  var ties = 0;
+  while (playerWins < x && computerWins < x){
+    var playerMove = getPlayerMove();
+    var computerMove = getComputerMove();
+    var result = (getWinner(playerMove,computerMove));
+        if (result == 'computer'){
+            computerWins += 1;
+            }
+        else if (result == 'player'){
+            playerWins += 1;
+        }
+        else{
+            ties +=1;
+        }
+    console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+    console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
+    }
+    if (playerWins == x){
+        console.log("Player Wins")
+        }
     else {
         console.log("Computer Wins")
     }
